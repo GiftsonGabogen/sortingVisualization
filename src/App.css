@@ -8,6 +8,9 @@
   position: absolute;
   z-index: 1;
 }
+.Visualizer .buttons .speed {
+  transform: rotateZ(180deg);
+}
 .Visualizer .Sorting {
   width: 95vw;
   height: 90vh;

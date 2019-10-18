@@ -13,9 +13,6 @@ const Quicksort = arrayArg => {
         arr[pindex] = temp;
         animation.swap = [i, pindex];
         pindex++;
-        animation.index = pindex;
-      } else {
-        animation.index = pindex;
       }
       if (i === end - 1) {
         animation.end = true;

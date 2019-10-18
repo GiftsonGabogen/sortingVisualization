@@ -10,10 +10,12 @@ const Visualizer = () => {
     arrayContainer.push(randomInt(10, 500));
   }
   const [array, setArray] = useState(arrayContainer);
+  const [speed, setSpeed] = useState(100);
+  const [bars, setBars] = useState(70);
 
-  /* useEffect(() => {
-    console.log(array);
-  }, [array]); */
+  useEffect(() => {
+    console.log(speed);
+  }, [speed]);
   const newArray = () => {
     arrayContainer = [];
     for (let i = 0; i < 70; i++) {
@@ -24,6 +26,19 @@ const Visualizer = () => {
     for (let a = 0; a < valueStickReset.length; a++) {
       valueStickReset[a].style.backgroundColor = "green";
     }
+  };
+
+  const newSpeed = e => {
+    setSpeed(e.target.value);
+  };
+
+  const newBars = e => {
+    arrayContainer = [];
+    setBars(Number(e.target.value));
+    for (let i = 0; i < Number(e.target.value); i++) {
+      arrayContainer.push(randomInt(10, 500));
+    }
+    setArray([...arrayContainer]);
   };
 
   return (
@@ -47,16 +62,36 @@ const Visualizer = () => {
         </button>
         <button
           className="sortButton"
-          onClick={() => quickSort(Quicksort(array))}
+          onClick={() => quickSort(Quicksort(array), Number(speed))}
         >
           Quick Sort
         </button>
         <button
           className="sortButton"
-          onClick={() => mergeSort(Mergesort(array), array, setArray)}
+          onClick={() =>
+            mergeSort(Mergesort(array), array, setArray, Number(speed))
+          }
         >
           Merge Sort
         </button>
+        <input
+          type="range"
+          value={speed}
+          className="speed"
+          step="20"
+          min="20"
+          max="200"
+          onChange={newSpeed}
+        />
+        <input
+          type="range"
+          value={bars}
+          className="bars"
+          step="10"
+          min="20"
+          max="120"
+          onChange={newBars}
+        />
       </div>
     </div>
   );

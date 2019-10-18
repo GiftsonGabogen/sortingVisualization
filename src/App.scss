@@ -7,6 +7,9 @@
   .buttons {
     position: absolute;
     z-index: 1;
+    .speed {
+      transform: rotateZ(180deg);
+    }
   }
   .Sorting {
     width: 95vw;

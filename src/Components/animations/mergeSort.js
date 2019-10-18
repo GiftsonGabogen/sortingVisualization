@@ -1,5 +1,4 @@
-const mergeSort = (animations, stateArray, setArray) => {
-  console.log(animations);
+const mergeSort = (animations, stateArray, setArray, speed) => {
   let array = stateArray;
   const valueStick = document.getElementsByClassName("values");
   for (let i = 0; i < animations.length; i++) {
@@ -36,10 +35,10 @@ const mergeSort = (animations, stateArray, setArray) => {
         for (let j = 0; j < valueStick.length; j++) {
           setTimeout(() => {
             valueStick[j].style.backgroundColor = "purple";
-          }, j * 20);
+          }, j * 50);
         }
       }
-    }, i * 100);
+    }, i * speed);
   }
 };
 

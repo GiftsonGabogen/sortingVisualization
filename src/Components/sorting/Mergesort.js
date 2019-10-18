@@ -47,8 +47,7 @@ const Mergesort = arrayArg => {
     }
     return [...newArray, ...leftArg, ...rightArg];
   };
-  let sorted = unMerging(NewArray);
-  console.log(sorted);
+  unMerging(NewArray);
   return animations;
 };
 
