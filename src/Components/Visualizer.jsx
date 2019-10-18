@@ -10,6 +10,10 @@ const Visualizer = () => {
     arrayContainer.push(randomInt(10, 500));
   }
   const [array, setArray] = useState(arrayContainer);
+
+  /* useEffect(() => {
+    console.log(array);
+  }, [array]); */
   const newArray = () => {
     arrayContainer = [];
     for (let i = 0; i < 70; i++) {
@@ -49,7 +53,7 @@ const Visualizer = () => {
         </button>
         <button
           className="sortButton"
-          onClick={() => mergeSort(Mergesort(array))}
+          onClick={() => mergeSort(Mergesort(array), array, setArray)}
         >
           Merge Sort
         </button>
