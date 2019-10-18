@@ -22,6 +22,10 @@ const Quicksort = arrayArg => {
       }
       animations.push(animation);
     }
+    let animation = {};
+    animation.compare = [pindex, end];
+    animation.swap = [pindex, end];
+    animations.push(animation);
     let tempo = pivot;
     arr[end] = arr[pindex];
     arr[pindex] = tempo;

@@ -4,22 +4,13 @@ import Mergesort from "./sorting/Mergesort";
 import Quicksort from "./sorting/Quicksort";
 const Visualizer = () => {
   let arrayContainer = [];
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 70; i++) {
     arrayContainer.push(randomInt(10, 500));
   }
-  const [array, setArray] = useState([
-    400,
-    800,
-    850,
-    900,
-    500,
-    200,
-    100,
-    600,
-    550
-  ]);
+  const [array, setArray] = useState(arrayContainer);
   const sort = sortedArray => {
     const { animations } = sortedArray;
+    console.log(sortedArray.arr);
     console.log(animations);
     for (let a = 0; a < animations.length; a++) {
       const { compare, swap } = animations[a];
@@ -62,7 +53,14 @@ const Visualizer = () => {
           valueStick[swap[1]].style.backgroundColor = "green";
           valueStick[swap[0]].style.backgroundColor = "green"; */
         }
-      }, a * 1000);
+        //swap heights
+        if (swap !== undefined || null) {
+          let one = valueStick[swap[1]].clientHeight;
+          let two = valueStick[swap[0]].clientHeight;
+          valueStick[swap[0]].style.height = `${one}px`;
+          valueStick[swap[1]].style.height = `${two}px`;
+        }
+      }, a * 100);
     }
   };
   return (
