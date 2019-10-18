@@ -5,9 +5,10 @@ import mergeSort from "./animations/mergeSort";
 import Quicksort from "./sorting/Quicksort";
 import quickSort from "./animations/quickSort";
 const Visualizer = () => {
+  let barHeight = 80;
   let arrayContainer = [];
   for (let i = 0; i < 70; i++) {
-    arrayContainer.push(randomInt(10, 500));
+    arrayContainer.push(randomInt(10, barHeight));
   }
   const [array, setArray] = useState(arrayContainer);
   const [speed, setSpeed] = useState(100);
@@ -18,13 +19,13 @@ const Visualizer = () => {
   }, [speed]);
   const newArray = () => {
     arrayContainer = [];
-    for (let i = 0; i < 70; i++) {
-      arrayContainer.push(randomInt(10, 500));
+    for (let i = 0; i < Number(bars); i++) {
+      arrayContainer.push(randomInt(10, barHeight));
     }
     setArray([...arrayContainer]);
     const valueStickReset = document.getElementsByClassName("values");
     for (let a = 0; a < valueStickReset.length; a++) {
-      valueStickReset[a].style.backgroundColor = "green";
+      valueStickReset[a].style.backgroundColor = "#6dd47e";
     }
   };
 
@@ -36,7 +37,7 @@ const Visualizer = () => {
     arrayContainer = [];
     setBars(Number(e.target.value));
     for (let i = 0; i < Number(e.target.value); i++) {
-      arrayContainer.push(randomInt(10, 500));
+      arrayContainer.push(randomInt(10, barHeight));
     }
     setArray([...arrayContainer]);
   };
@@ -49,7 +50,7 @@ const Visualizer = () => {
             return (
               <div
                 className="values"
-                style={{ height: `${arrValue}px` }}
+                style={{ height: `${arrValue}%` }}
                 key={i}
               ></div>
             );
@@ -57,41 +58,47 @@ const Visualizer = () => {
         </div>
       </div>
       <div className="buttons">
-        <button className="newArray" onClick={() => newArray()}>
-          new Array
-        </button>
-        <button
+        <p className="newArray sortButton" onClick={() => newArray()}>
+          New Array
+        </p>
+        <p
           className="sortButton"
           onClick={() => quickSort(Quicksort(array), Number(speed))}
         >
           Quick Sort
-        </button>
-        <button
+        </p>
+        <p
           className="sortButton"
           onClick={() =>
             mergeSort(Mergesort(array), array, setArray, Number(speed))
           }
         >
           Merge Sort
-        </button>
-        <input
-          type="range"
-          value={speed}
-          className="speed"
-          step="20"
-          min="20"
-          max="200"
-          onChange={newSpeed}
-        />
-        <input
-          type="range"
-          value={bars}
-          className="bars"
-          step="10"
-          min="20"
-          max="120"
-          onChange={newBars}
-        />
+        </p>
+        <div className="range">
+          <h3>Speed</h3>
+          <input
+            type="range"
+            value={speed}
+            className="speed"
+            step="20"
+            min="20"
+            max="200"
+            onChange={newSpeed}
+          />
+        </div>
+        <div className="range">
+          <h3>Bars</h3>
+          <input
+            type="range"
+            value={bars}
+            className="bars"
+            step="10"
+            min="20"
+            max="120"
+            onChange={newBars}
+          />
+        </div>
       </div>
     </div>
   );
