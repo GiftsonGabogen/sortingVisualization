@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.Visualizer {
+  button {
+    position: absolute;
+    z-index: 1;
+  }
+  .Sorting {
+    width: 95vw;
+    height: 90vh;
+    position: absolute;
+    display: grid;
+    justify-items: center;
+    .SortingTable {
+      position: absolute;
+      bottom: 0px;
+      .values {
+        width: 0.5rem;
+        margin: 1px;
+        background-color: green;
+        display: inline-block;
+      }
+    }
+  }
+}

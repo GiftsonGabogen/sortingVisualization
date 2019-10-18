@@ -1,22 +1,29 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
+.Visualizer button {
+  position: absolute;
+  z-index: 1;
+}
+.Visualizer .Sorting {
+  width: 95vw;
+  height: 90vh;
+  position: absolute;
+  display: grid;
+  justify-items: center;
+}
+.Visualizer .Sorting .SortingTable {
+  position: absolute;
+  bottom: 0px;
+}
+.Visualizer .Sorting .SortingTable .values {
+  width: 0.5rem;
+  margin: 1px;
+  background-color: #00ca0a;
+  display: inline-block;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
+/*# sourceMappingURL=App.css.map */
