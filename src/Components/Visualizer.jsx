@@ -1,68 +1,27 @@
 import React, { useState, useEffect } from "react";
 import randomInt from "./modules/randomInt";
 import Mergesort from "./sorting/Mergesort";
+import mergeSort from "./animations/mergeSort";
 import Quicksort from "./sorting/Quicksort";
+import quickSort from "./animations/quickSort";
 const Visualizer = () => {
   let arrayContainer = [];
   for (let i = 0; i < 70; i++) {
     arrayContainer.push(randomInt(10, 500));
   }
   const [array, setArray] = useState(arrayContainer);
-  const sort = sortedArray => {
-    const { animations } = sortedArray;
-    console.log(sortedArray.arr);
-    console.log(animations);
-    for (let a = 0; a < animations.length; a++) {
-      const { compare, swap } = animations[a];
-      setTimeout(() => {
-        const valueStick = document.getElementsByClassName("values");
-        //if an element is comparing, turn it's color to green
-        valueStick[compare[1]].style.backgroundColor = "red";
-        valueStick[compare[0]].style.backgroundColor = "red";
-        //for resetting color of previous loops to green
-        if (a > 0) {
-          valueStick[animations[a - 1].compare[0]].style.backgroundColor =
-            "green";
-          if (animations[a - 1].swap !== undefined || null) {
-            valueStick[animations[a - 1].swap[0]].style.backgroundColor =
-              "green";
-            valueStick[animations[a - 1].swap[1]].style.backgroundColor =
-              "green";
-          }
-          //if the first iteration on quicksort is done the pivot property is change so the previous pivot color will be turn back into green
-          if (animations[a - 1].end === true) {
-            valueStick[animations[a - 1].compare[1]].style.backgroundColor =
-              "green";
-          }
-        }
-        //if we're swapping the color will turn blue
-        if (swap !== undefined || null) {
-          valueStick[swap[1]].style.backgroundColor = "blue";
-          valueStick[swap[0]].style.backgroundColor = "blue";
-        }
-        //if the whole quicksort is finished turn all the color of the bars purple
-        if (a === animations.length - 1) {
-          for (let b = 0; b < valueStick.length; b++) {
-            setTimeout(() => {
-              valueStick[b].style.backgroundColor = "purple";
-            }, b * 100);
-          }
-
-          /* valueStick[compare[1]].style.backgroundColor = "green";
-          valueStick[compare[0]].style.backgroundColor = "green";
-          valueStick[swap[1]].style.backgroundColor = "green";
-          valueStick[swap[0]].style.backgroundColor = "green"; */
-        }
-        //swap heights
-        if (swap !== undefined || null) {
-          let one = valueStick[swap[1]].clientHeight;
-          let two = valueStick[swap[0]].clientHeight;
-          valueStick[swap[0]].style.height = `${one}px`;
-          valueStick[swap[1]].style.height = `${two}px`;
-        }
-      }, a * 100);
+  const newArray = () => {
+    arrayContainer = [];
+    for (let i = 0; i < 70; i++) {
+      arrayContainer.push(randomInt(10, 500));
+    }
+    setArray([...arrayContainer]);
+    const valueStickReset = document.getElementsByClassName("values");
+    for (let a = 0; a < valueStickReset.length; a++) {
+      valueStickReset[a].style.backgroundColor = "green";
     }
   };
+
   return (
     <div className="Visualizer">
       <div className="Sorting">
@@ -78,9 +37,23 @@ const Visualizer = () => {
           })}
         </div>
       </div>
-      <button className="sortButton" onClick={() => sort(Quicksort(array))}>
-        Quick Sort
-      </button>
+      <div className="buttons">
+        <button className="newArray" onClick={() => newArray()}>
+          new Array
+        </button>
+        <button
+          className="sortButton"
+          onClick={() => quickSort(Quicksort(array))}
+        >
+          Quick Sort
+        </button>
+        <button
+          className="sortButton"
+          onClick={() => mergeSort(Mergesort(array))}
+        >
+          Merge Sort
+        </button>
+      </div>
     </div>
   );
 };

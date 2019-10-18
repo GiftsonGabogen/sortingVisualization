@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-.Visualizer button {
+.Visualizer .buttons {
   position: absolute;
   z-index: 1;
 }
@@ -22,7 +22,7 @@
 .Visualizer .Sorting .SortingTable .values {
   width: 0.5rem;
   margin: 1px;
-  background-color: #00ca0a;
+  background-color: green;
   display: inline-block;
 }
 
