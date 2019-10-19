@@ -39,8 +39,8 @@ const Quicksort = arrayArg => {
 
     return { arr: arr, animations: animations };
   };
-  return quicksort(arrayArg, 0, arrayArg.length - 1, animations);
+  quicksort(arrayArg, 0, arrayArg.length - 1, animations);
+  return animations;
 };
-console.log(Quicksort([15, 5, 45, 20, 35, 41, 2]));
 
 export default Quicksort;

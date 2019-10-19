@@ -3,7 +3,9 @@ import randomInt from "./modules/randomInt";
 import Mergesort from "./sorting/Mergesort";
 import mergeSort from "./animations/mergeSort";
 import Quicksort from "./sorting/Quicksort";
+import Selectionsort from "./sorting/Selectionsort";
 import quickSort from "./animations/quickSort";
+import selectionSort from "./animations/selectionSort";
 const Visualizer = () => {
   let barHeight = 80;
   let arrayContainer = [];
@@ -12,7 +14,7 @@ const Visualizer = () => {
   }
   const [array, setArray] = useState(arrayContainer);
   const [speed, setSpeed] = useState(100);
-  const [bars, setBars] = useState(70);
+  const [bars, setBars] = useState(120);
 
   useEffect(() => {
     console.log(speed);
@@ -22,11 +24,11 @@ const Visualizer = () => {
     for (let i = 0; i < Number(bars); i++) {
       arrayContainer.push(randomInt(10, barHeight));
     }
-    setArray([...arrayContainer]);
     const valueStickReset = document.getElementsByClassName("values");
     for (let a = 0; a < valueStickReset.length; a++) {
       valueStickReset[a].style.backgroundColor = "#6dd47e";
     }
+    setArray([...arrayContainer]);
   };
 
   const newSpeed = e => {
@@ -75,6 +77,12 @@ const Visualizer = () => {
         >
           Merge Sort
         </p>
+        <p
+          className="sortButton"
+          onClick={() => selectionSort(Selectionsort(array), Number(speed))}
+        >
+          Selection Sort
+        </p>
         <div className="range">
           <h3>Speed</h3>
           <input
@@ -93,9 +101,9 @@ const Visualizer = () => {
             type="range"
             value={bars}
             className="bars"
-            step="10"
+            step="20"
             min="20"
-            max="120"
+            max="200"
             onChange={newBars}
           />
         </div>
