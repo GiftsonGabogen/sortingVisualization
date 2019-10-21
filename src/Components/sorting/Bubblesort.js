@@ -1,8 +1,9 @@
 const Bubblesort = arrayArg => {
   let animations = [];
-  for (let j = arrayArg.length; j > 0; j--) {
+  let j = arrayArg.length - 1;
+  while (j > 0) {
     let last = 0;
-    for (let i = 0; i < arrayArg.length - 1; i++) {
+    for (let i = 0; i < j; i++) {
       let animation = {};
       animation.compare = [i, i + 1];
       if (arrayArg[i] > arrayArg[i + 1]) {

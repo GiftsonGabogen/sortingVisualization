@@ -129,9 +129,9 @@ const Visualizer = props => {
             type="range"
             value={speed}
             className="speed"
-            step="5"
-            min="5"
-            max="200"
+            step="1"
+            min="1"
+            max="250"
             onChange={newSpeed}
           />
         </div>
