@@ -1,7 +1,8 @@
 const forLoopAlgo = (animations, speed, type) => {
+  global.Timeouts = [];
   for (let a = 0; a < animations.length; a++) {
     const { compare, swap } = animations[a];
-    setTimeout(() => {
+    let timeout = setTimeout(() => {
       const valueStick = document.getElementsByClassName("values");
       //for resetting color of previous loops to green
       if (a > 0) {
@@ -38,12 +39,14 @@ const forLoopAlgo = (animations, speed, type) => {
       //if the whole quicksort is finished turn all the color of the bars purple
       if (a === animations.length - 1) {
         for (let b = 0; b < valueStick.length; b++) {
-          setTimeout(() => {
+          let innertimeout = setTimeout(() => {
             valueStick[b].style.backgroundColor = "purple";
           }, b * (speed / 3));
+          global.Timeouts.push(innertimeout);
         }
       }
     }, a * speed);
+    global.Timeouts.push(timeout);
   }
 };
 export default forLoopAlgo;

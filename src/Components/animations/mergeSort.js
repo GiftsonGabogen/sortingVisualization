@@ -1,8 +1,9 @@
 const mergeSort = (animations, stateArray, setArray, speed) => {
+  global.Timeouts = [];
   let array = stateArray;
   const valueStick = document.getElementsByClassName("values");
   for (let i = 0; i < animations.length; i++) {
-    setTimeout(() => {
+    let timeout = setTimeout(() => {
       if (i > 0) {
         valueStick[animations[i - 1].compare[0]].style.backgroundColor =
           "#6dd47e";
@@ -34,12 +35,14 @@ const mergeSort = (animations, stateArray, setArray, speed) => {
       if (i === animations.length - 1) {
         for (let j = 0; j < valueStick.length; j++) {
           valueStick[j].style.backgroundColor = "#6dd47e";
-          setTimeout(() => {
+          let innertimeout = setTimeout(() => {
             valueStick[j].style.backgroundColor = "purple";
           }, j * (speed / 3));
+          global.Timeouts.push(innertimeout);
         }
       }
     }, i * speed);
+    global.Timeouts.push(timeout);
   }
 };
 

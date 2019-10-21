@@ -19,6 +19,41 @@ body {
   display: grid;
   grid-template-rows: 10fr 2fr;
 }
+.Visualizer .Legends {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2rem;
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  z-index: 2;
+}
+.Visualizer .Legends .legend {
+  justify-content: center;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 9fr;
+}
+.Visualizer .Legends .legend p {
+  justify-content: center;
+  display: inline-block;
+  align-items: center;
+}
+.Visualizer .Legends .legend .color {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.Visualizer .Legends .legend .compareLegend {
+  background-color: #293250;
+}
+.Visualizer .Legends .legend .swapLegend {
+  background-color: #ffd55a;
+}
+.Visualizer .Legends .legend .finishLegend {
+  background-color: purple;
+}
 .Visualizer .buttons {
   background-color: #ffd55a;
   display: grid;
@@ -58,7 +93,6 @@ body {
 }
 .Visualizer .Sorting .SortingTable .values {
   height: 100%;
-  width: 0.2rem;
   margin: 1px;
   background-color: #6dd47e;
   display: inline-block;

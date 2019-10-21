@@ -20,6 +20,41 @@ body {
   width: 100%;
   display: grid;
   grid-template-rows: 10fr 2fr;
+  .Legends {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    z-index: 2;
+    .legend {
+      justify-content: center;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 9fr;
+      p {
+        justify-content: center;
+        display: inline-block;
+        align-items: center;
+      }
+      .color {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+      }
+      .compareLegend {
+        background-color: $tersiaryColor;
+      }
+      .swapLegend {
+        background-color: $primaryColor;
+      }
+      .finishLegend {
+        background-color: purple;
+      }
+    }
+  }
   .buttons {
     background-color: $primaryColor;
     display: grid;
@@ -59,7 +94,6 @@ body {
     .SortingTable {
       .values {
         height: 100%;
-        width: 0.2rem;
         margin: 1px;
         background-color: $secondaryColor;
         display: inline-block;

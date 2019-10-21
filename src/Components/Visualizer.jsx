@@ -4,23 +4,23 @@ import Mergesort from "./sorting/Mergesort";
 import mergeSort from "./animations/mergeSort";
 import Quicksort from "./sorting/Quicksort";
 import Selectionsort from "./sorting/Selectionsort";
+import Bubblesort from "./sorting/Bubblesort";
 import quickSort from "./animations/quickSort";
 import selectionSort from "./animations/selectionSort";
-const Visualizer = () => {
+import bubbleSort from "./animations/bubbleSort";
+const Visualizer = props => {
   let barHeight = 80;
   let arrayContainer = [];
-  for (let i = 0; i < 70; i++) {
+  for (let i = 0; i < 120; i++) {
     arrayContainer.push(randomInt(10, barHeight));
   }
   const [array, setArray] = useState(arrayContainer);
   const [speed, setSpeed] = useState(100);
   const [bars, setBars] = useState(120);
 
-  useEffect(() => {
-    console.log(speed);
-  }, [speed]);
+  useEffect(() => {});
   const newArray = () => {
-    arrayContainer = [];
+    /* arrayContainer = [];
     for (let i = 0; i < Number(bars); i++) {
       arrayContainer.push(randomInt(10, barHeight));
     }
@@ -28,11 +28,17 @@ const Visualizer = () => {
     for (let a = 0; a < valueStickReset.length; a++) {
       valueStickReset[a].style.backgroundColor = "#6dd47e";
     }
-    setArray([...arrayContainer]);
+    setArray([...arrayContainer]); */
+    for (let stop = 0; stop < global.Timeouts.length; stop++) {
+      clearTimeout(global.Timeouts[stop]);
+    }
+    global.Timeouts = [];
+    props.history.push(`Reload/-Visualizer`);
   };
 
   const newSpeed = e => {
     setSpeed(e.target.value);
+    localStorage.setItem("speed", e.target.value);
   };
 
   const newBars = e => {
@@ -42,17 +48,43 @@ const Visualizer = () => {
       arrayContainer.push(randomInt(10, barHeight));
     }
     setArray([...arrayContainer]);
+    localStorage.setItem("bars", e.target.value);
+  };
+
+  const stopAnimation = () => {
+    for (let stop = 0; stop < global.Timeouts.length; stop++) {
+      clearTimeout(global.Timeouts[stop]);
+    }
+    const valueStickReset = document.getElementsByClassName("values");
+    for (let a = 0; a < valueStickReset.length; a++) {
+      valueStickReset[a].style.backgroundColor = "#6dd47e";
+    }
+    global.Timeouts = [];
   };
 
   return (
     <div className="Visualizer">
+      <div className="Legends">
+        <div className="legend">
+          <div className="color compareLegend"></div>
+          <p>Comparing</p>
+        </div>
+        <div className="legend">
+          <div className="color swapLegend"></div>
+          <p>Swapping</p>
+        </div>
+        <div className="legend">
+          <div className="color finishLegend"></div>
+          <p>Finish</p>
+        </div>
+      </div>
       <div className="Sorting">
         <div className="SortingTable">
           {array.map((arrValue, i) => {
             return (
               <div
                 className="values"
-                style={{ height: `${arrValue}%` }}
+                style={{ height: `${arrValue}%`, width: `${50 / bars}rem` }}
                 key={i}
               ></div>
             );
@@ -83,14 +115,24 @@ const Visualizer = () => {
         >
           Selection Sort
         </p>
+        <p
+          className="sortButton"
+          onClick={() => bubbleSort(Bubblesort(array), Number(speed))}
+        >
+          Bubble Sort
+        </p>
+        <p className="sortButton" onClick={() => stopAnimation()}>
+          Stop
+        </p>
+
         <div className="range">
           <h3>Speed</h3>
           <input
             type="range"
             value={speed}
             className="speed"
-            step="20"
-            min="20"
+            step="5"
+            min="5"
             max="200"
             onChange={newSpeed}
           />
@@ -103,7 +145,7 @@ const Visualizer = () => {
             className="bars"
             step="20"
             min="20"
-            max="200"
+            max="240"
             onChange={newBars}
           />
         </div>
