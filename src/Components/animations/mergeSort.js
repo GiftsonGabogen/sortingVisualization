@@ -1,4 +1,5 @@
-const mergeSort = (animations, stateArray, setArray, speed) => {
+const mergeSort = data => {
+  const { animations, stateArray, setArray, speed } = data;
   //Firstly Make Sure if There is animations present on the DOM then delete it before making another animation to prevent overlapping
   if (global.Timeouts !== undefined || null || 0) {
     for (let stop = 0; stop < global.Timeouts.length; stop++) {

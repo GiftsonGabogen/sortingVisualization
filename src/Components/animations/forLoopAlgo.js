@@ -13,20 +13,15 @@ const forLoopAlgo = (animations, speed, type) => {
       const valueStick = document.getElementsByClassName("values");
       //for resetting color of previous loops to green
       if (a > 0) {
-        valueStick[animations[a - 1].compare[0]].style.backgroundColor =
-          "#6dd47e";
-        valueStick[animations[a - 1].compare[1]].style.backgroundColor =
-          "#6dd47e";
+        valueStick[animations[a - 1].compare[0]].style.backgroundColor = "#6dd47e";
+        valueStick[animations[a - 1].compare[1]].style.backgroundColor = "#6dd47e";
         if (animations[a - 1].swap !== undefined || null) {
-          valueStick[animations[a - 1].swap[0]].style.backgroundColor =
-            "#6dd47e";
-          valueStick[animations[a - 1].swap[1]].style.backgroundColor =
-            "#6dd47e";
+          valueStick[animations[a - 1].swap[0]].style.backgroundColor = "#6dd47e";
+          valueStick[animations[a - 1].swap[1]].style.backgroundColor = "#6dd47e";
         }
         //if the first iteration on quicksort is done the pivot property is change so the previous pivot color will be turn back into green
         if (animations[a - 1].end === true) {
-          valueStick[animations[a - 1].compare[1]].style.backgroundColor =
-            "#6dd47e";
+          valueStick[animations[a - 1].compare[1]].style.backgroundColor = "#6dd47e";
         }
       }
 
