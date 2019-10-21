@@ -11,26 +11,24 @@ import bubbleSort from "./animations/bubbleSort";
 const Visualizer = props => {
   let barHeight = 80;
   let arrayContainer = [];
-  for (let i = 0; i < 120; i++) {
+
+  const [speed, setSpeed] = useState(
+    localStorage.getItem("speed") !== null ? localStorage.getItem("speed") : 50
+  );
+  const [bars, setBars] = useState(
+    localStorage.getItem("bars") !== null ? localStorage.getItem("bars") : 120
+  );
+  for (let i = 0; i < bars; i++) {
     arrayContainer.push(randomInt(10, barHeight));
   }
   const [array, setArray] = useState(arrayContainer);
-  const [speed, setSpeed] = useState(100);
-  const [bars, setBars] = useState(120);
 
   useEffect(() => {});
   const newArray = () => {
-    /* arrayContainer = [];
-    for (let i = 0; i < Number(bars); i++) {
-      arrayContainer.push(randomInt(10, barHeight));
-    }
-    const valueStickReset = document.getElementsByClassName("values");
-    for (let a = 0; a < valueStickReset.length; a++) {
-      valueStickReset[a].style.backgroundColor = "#6dd47e";
-    }
-    setArray([...arrayContainer]); */
-    for (let stop = 0; stop < global.Timeouts.length; stop++) {
-      clearTimeout(global.Timeouts[stop]);
+    if (global.Timeouts !== undefined || null || 0) {
+      for (let stop = 0; stop < global.Timeouts.length; stop++) {
+        clearTimeout(global.Timeouts[stop]);
+      }
     }
     global.Timeouts = [];
     props.history.push(`Reload/-Visualizer`);
@@ -93,7 +91,7 @@ const Visualizer = props => {
       </div>
       <div className="buttons">
         <p className="newArray sortButton" onClick={() => newArray()}>
-          New Array
+          New Bars
         </p>
         <p
           className="sortButton"

@@ -1,4 +1,11 @@
 const mergeSort = (animations, stateArray, setArray, speed) => {
+  //Firstly Make Sure if There is animations present on the DOM then delete it before making another animation to prevent overlapping
+  if (global.Timeouts !== undefined || null || 0) {
+    for (let stop = 0; stop < global.Timeouts.length; stop++) {
+      clearTimeout(global.Timeouts[stop]);
+    }
+  }
+  //empty the timeout variable if set already
   global.Timeouts = [];
   let array = stateArray;
   const valueStick = document.getElementsByClassName("values");
