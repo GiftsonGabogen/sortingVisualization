@@ -13,15 +13,11 @@ const mergeSort = data => {
   for (let i = 0; i < animations.length; i++) {
     let timeout = setTimeout(() => {
       if (i > 0) {
-        valueStick[animations[i - 1].compare[0]].style.backgroundColor =
-          "#6dd47e";
-        valueStick[animations[i - 1].compare[1]].style.backgroundColor =
-          "#6dd47e";
+        valueStick[animations[i - 1].compare[0]].style.backgroundColor = "#6dd47e";
+        valueStick[animations[i - 1].compare[1]].style.backgroundColor = "#6dd47e";
         if (animations[i - 1].insert !== undefined) {
-          valueStick[animations[i - 1].insert[0]].style.backgroundColor =
-            "#6dd47e";
-          valueStick[animations[i - 1].insert[1]].style.backgroundColor =
-            "#6dd47e";
+          valueStick[animations[i - 1].insert[0]].style.backgroundColor = "#6dd47e";
+          valueStick[animations[i - 1].insert[1]].style.backgroundColor = "#6dd47e";
         }
       }
       if (animations[i].compare) {

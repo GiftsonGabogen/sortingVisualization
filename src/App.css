@@ -18,6 +18,80 @@ body {
   display: grid;
   grid-template-columns: 10fr 2fr;
 }
+.Visualizer .sortingModalWrapper {
+  z-index: 4;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal {
+  transition: 200ms;
+  position: absolute;
+  right: -100px;
+  top: -100px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal .sortAlgorithm {
+  display: none;
+  position: absolute;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal .sortAlgorithm .sortingTextBold {
+  font-weight: bold;
+  color: #293250;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal .openSortingSelection {
+  display: grid;
+  bottom: 0;
+  left: 0;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal .sortAlgorithm:nth-child(1) {
+  top: 51%;
+  left: 1%;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal .sortAlgorithm:nth-child(2) {
+  top: 61%;
+  left: 5%;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal .sortAlgorithm:nth-child(3) {
+  top: 71%;
+  left: 10%;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal .sortAlgorithm:nth-child(4) {
+  top: 81%;
+  left: 17%;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal .sortAlgorithm:nth-child(5) {
+  top: 91%;
+  left: 30%;
+}
+.Visualizer .sortingModalWrapper .openSortingSelection {
+  align-content: center;
+  height: 100px;
+  width: 100px;
+  font-size: 0.7rem;
+  transform: rotateZ(45deg);
+  transform-origin: center;
+  text-align: center;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal:hover {
+  transition: 400ms;
+  right: -400px;
+  top: -400px;
+  width: 800px;
+  height: 800px;
+  border-radius: 400px;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal:hover .sortAlgorithm {
+  display: inline-block;
+}
+.Visualizer .sortingModalWrapper .sortingSelectionModal:hover .openSortingSelection {
+  font-size: 1.5rem;
+  bottom: 3rem;
+}
 .Visualizer .Legends {
   position: fixed;
   top: 0;
@@ -63,6 +137,7 @@ body {
   z-index: 3;
   align-content: center;
   align-items: center;
+  position: relative;
 }
 .Visualizer .buttons .sortButton,
 .Visualizer .buttons input {

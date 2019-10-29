@@ -16,6 +16,81 @@ body {
   position: relative;
 }
 .Visualizer {
+  .sortingModalWrapper {
+    z-index: 4;
+    position: fixed;
+    right: 0;
+    top: 0;
+    .sortingSelectionModal {
+      transition: 200ms;
+      position: absolute;
+      right: -100px;
+      top: -100px;
+      width: 200px;
+      height: 200px;
+      border-radius: 100px;
+      background-color: rgba(0, 0, 0, 0.2);
+      text-align: center;
+      .sortAlgorithm {
+        display: none;
+        position: absolute;
+        .sortingTextBold {
+          font-weight: bold;
+          color: $tersiaryColor;
+        }
+      }
+      .openSortingSelection {
+        display: grid;
+        bottom: 0;
+        left: 0;
+      }
+      .sortAlgorithm:nth-child(1) {
+        top: 51%;
+        left: 1%;
+      }
+      .sortAlgorithm:nth-child(2) {
+        top: 61%;
+        left: 5%;
+      }
+      .sortAlgorithm:nth-child(3) {
+        top: 71%;
+        left: 10%;
+      }
+      .sortAlgorithm:nth-child(4) {
+        top: 81%;
+        left: 17%;
+      }
+      .sortAlgorithm:nth-child(5) {
+        top: 91%;
+        left: 30%;
+      }
+    }
+
+    .openSortingSelection {
+      align-content: center;
+      height: 100px;
+      width: 100px;
+      font-size: 0.7rem;
+      transform: rotateZ(45deg);
+      transform-origin: center;
+      text-align: center;
+    }
+    .sortingSelectionModal:hover {
+      .sortAlgorithm {
+        display: inline-block;
+      }
+      .openSortingSelection {
+        font-size: 1.5rem;
+        bottom: 3rem;
+      }
+      transition: 400ms;
+      right: -400px;
+      top: -400px;
+      width: 800px;
+      height: 800px;
+      border-radius: 400px;
+    }
+  }
   height: 100vh;
   display: grid;
   grid-template-columns: 10fr 2fr;
@@ -64,6 +139,7 @@ body {
     z-index: 3;
     align-content: center;
     align-items: center;
+    position: relative;
     .sortButton,
     input {
       margin: 1rem;
@@ -104,3 +180,5 @@ body {
     }
   }
 }
+
+@import "_Cube.scss";

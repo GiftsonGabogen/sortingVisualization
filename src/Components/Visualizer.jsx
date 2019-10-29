@@ -3,9 +3,11 @@ import randomInt from "./modules/randomInt";
 import Mergesort from "./sorting/Mergesort";
 import mergeSort from "./animations/mergeSort";
 import Quicksort from "./sorting/Quicksort";
+import Radixsort from "./sorting/Radixsort";
 import Selectionsort from "./sorting/Selectionsort";
 import Bubblesort from "./sorting/Bubblesort";
 import quickSort from "./animations/quickSort";
+import radixSort from "./animations/radixSort";
 import selectionSort from "./animations/selectionSort";
 import bubbleSort from "./animations/bubbleSort";
 import useSpeed from "./customhooks/Speed";
@@ -48,6 +50,9 @@ const Visualizer = props => {
 
   const startSort = () => {
     switch (sorting) {
+      case "RadixSort":
+        radixSort(Radixsort(array), speed);
+        break;
       case "MergeSort":
         mergeSort({ animations: Mergesort(array), stateArray: array, setArray: setArray, speed: speed });
         break;
@@ -65,8 +70,32 @@ const Visualizer = props => {
     }
   };
 
+  const changeSortingAlgorithm = Algo => {
+    sortingValueChange(Algo);
+  };
+
   return (
     <div className="Visualizer">
+      <div className="sortingModalWrapper">
+        <div className="sortingSelectionModal">
+          <p className="sortButton sortAlgorithm" onClick={() => changeSortingAlgorithm("MergeSort")}>
+            <p className={`sortingText ${sorting === "MergeSort" ? "sortingTextBold" : ""}`}>Merge Sort</p>
+          </p>
+          <p className="sortButton sortAlgorithm" onClick={() => changeSortingAlgorithm("QuickSort")}>
+            <p className={`sortingText ${sorting === "QuickSort" ? "sortingTextBold" : ""}`}>Quick Sort</p>
+          </p>
+          <p className="sortButton sortAlgorithm" onClick={() => changeSortingAlgorithm("RadixSort")}>
+            <p className={`sortingText ${sorting === "RadixSort" ? "sortingTextBold" : ""}`}>Radix Sort</p>
+          </p>
+          <p className="sortButton sortAlgorithm" onClick={() => changeSortingAlgorithm("SelectionSort")}>
+            <p className={`sortingText ${sorting === "SelectionSort" ? "sortingTextBold" : ""}`}>Selection Sort</p>
+          </p>
+          <p className="sortButton sortAlgorithm" onClick={() => changeSortingAlgorithm("BubbleSort")}>
+            <p className={`sortingText ${sorting === "BubbleSort" ? "sortingTextBold" : ""}`}>Bubble Sort</p>
+          </p>
+          <div className="sortAlgorithm openSortingSelection">{sorting}</div>
+        </div>
+      </div>
       <div className="Legends">
         <div className="legend">
           <div className="color compareLegend"></div>
@@ -92,19 +121,11 @@ const Visualizer = props => {
         <p className="newArray sortButton" onClick={newArray}>
           New Bars
         </p>
-        <form onChange={sortingValueChange}>
-          <input type="radio" name="Sorting" value="MergeSort" defaultChecked={sorting === "MergeSort" ? true : false}/> Merge Sort
-          <br />
-          <input type="radio" name="Sorting" value="SelectionSort" defaultChecked={sorting === "SelectionSort" ? true : false}/> Selection <br />
-          <input type="radio" name="Sorting" value="QuickSort" defaultChecked={sorting === "QuickSort" ? true : false}/> Quick Sort
-          <br />
-          <input type="radio" name="Sorting" value="BubbleSort" defaultChecked={sorting === "BubbleSort" ? true : false}/> Bubble Sort
-        </form>
 
-        <p className="sortButton" onClick={startSort}>
+        <p className="sortButton playButton" onClick={startSort}>
           Start
         </p>
-        <p className="sortButton" onClick={stopAnimation}>
+        <p className="sortButton stopButton" onClick={stopAnimation}>
           Stop
         </p>
 

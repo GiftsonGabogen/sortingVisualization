@@ -5,9 +5,9 @@ const useSorting = () => {
     localStorage.getItem("sorting") !== null ? localStorage.getItem("sorting") : "MergeSort"
   );
 
-  const sortingValueChange = e => {
-    localStorage.setItem("sorting", e.target.value);
-    setSorting(e.target.value);
+  const sortingValueChange = Algo => {
+    localStorage.setItem("sorting", Algo);
+    setSorting(Algo);
   };
 
   return { sorting, sortingValueChange };
