@@ -16,7 +16,7 @@ const useArray = Arguments => {
       }
     }
     global.Timeouts = [];
-    props.history.push(`Reload/-Visualizer`);
+    props.history.push(`Reload/-`);
   };
 
   return { array, setArray, newArray };

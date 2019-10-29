@@ -139,6 +139,10 @@ body {
   align-items: center;
   position: relative;
 }
+.Visualizer .buttons .Ainsort {
+  text-align: center;
+  width: 100%;
+}
 .Visualizer .buttons .sortButton,
 .Visualizer .buttons input {
   margin: 1rem;

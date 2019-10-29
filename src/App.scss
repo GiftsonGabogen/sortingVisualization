@@ -130,6 +130,10 @@ body {
     }
   }
   .buttons {
+    .Ainsort {
+      text-align: center;
+      width: 100%;
+    }
     background-color: $primaryColor;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 1px;
     display: grid;

@@ -137,6 +137,10 @@ const Visualizer = props => {
           <h3>Bars</h3>
           <input type="range" value={bars} className="bars" step="20" min="20" max="240" onChange={newBars} />
         </div>
+        <p className="Ainsort">
+          Checkout this Sorting Algortihm Library That You can Use on Your Projects <br />
+          <a href="https://www.npmjs.com/packages/ainsort">ainsort</a>
+        </p>
       </div>
     </div>
   );
