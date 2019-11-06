@@ -139,7 +139,7 @@ const Visualizer = props => {
         </div>
         <p className="Ainsort">
           Checkout this Sorting Algortihm Library That You can Use on Your Projects <br />
-          <a href="https://www.npmjs.com/packages/ainsort">ainsort</a>
+          <a href="https://www.npmjs.com/package/ainsort">ainsort</a>
         </p>
       </div>
     </div>
